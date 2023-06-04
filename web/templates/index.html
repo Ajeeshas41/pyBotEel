@@ -1,0 +1,22 @@
+
+
+<h1>This is index page</h1>
+<button hx-get="/about" hx-target="#_main" hx-indicator="#preloader">Go To HX-About</button>
+<button hx-get="/new" hx-target="#_main" hx-indicator="#preloader">Go To HX-New</button>
+<button id="pr">Print Text</button>
+<div id="test"></div>
+
+<script>
+    if (typeof btn === 'undefined') {
+        const btn = document.getElementById("pr")
+            btn.addEventListener("click", () => {
+                callPYWrite('Index')
+        })
+
+        eel.expose(js_write);
+        function js_write(text) {
+            document.getElementById("test").innerHTML = `<h1>This is Index, the lazy loaded text is ${ text }.`
+        }
+    }
+    
+</script>
