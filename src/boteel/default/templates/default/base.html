@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link
+      rel="shortcut icon"
+      href="/assets/img/favicon.ico"
+      type="image/x-icon"
+    />
+    <link rel="stylesheet" href="/vendor/bootstrap/bootstrap.min.css" />
+    <link
+      rel="stylesheet"
+      href="/vendor/bootstrap-icons/bootstrap-icons.min.css"
+    />
+    <title>{{ app_title }}</title>
+    <script src="/eel.js"></script>
+    <script src="/vendor/htmx/htmx.min.js"></script>
+    <script src="/vendor/bootstrap/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="/styles/style.css" />
+  </head>
+
+  <body>
+    <div id="preloader" class="htmx-indicator">
+      <div id="loader"></div>
+    </div>
+
+    <div class="modal fade" id="_modal" data-bs-backdrop="static"></div>
+
+    <div id="header">
+      <nav class="navbar navbar-expand navbar-light bg-light">
+        <div hx-swap-oob="true" id="_header" class="container-fluid">
+        {% with page_title=app_title %}
+        {% include get_template('default/navbar.html')%}
+        {% endwith %}
+        </div>
+      </nav>
+    </div>
+
+    <div id="root">{% block root %} {% endblock %}</div>
+
+    <div class="main-footer">
+      <div class="footer-text">
+        <span
+          >Copyright &copy;<span id="copy-year"></span> Innovations Focus
+          Group</span
+        >
+        <span>Designed by: Ajeesh A S</span>
+      </div>
+    </div>
+
+    <div
+      data-toast-container
+      class="toast-container position-fixed top-0 end-0 p-3"
+    >
+      <div
+        data-toast-template
+        class="toast align-items-center border-0"
+        role="alert"
+        aria-live="assertive"
+        aria-atomic="true"
+      >
+        <div class="d-flex">
+          <div data-toast-body class="toast-body"></div>
+          <button
+            type="button"
+            class="btn-close btn-close-white me-2 m-auto"
+            data-bs-dismiss="toast"
+            aria-label="Close"
+          ></button>
+        </div>
+      </div>
+    </div>
+    <script>document.getElementById("copy-year").innerHTML = new Date().getFullYear()</script>
+    <script src="/scripts/main.js"></script>
+  </body>
+</html>

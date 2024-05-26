@@ -1,0 +1,28 @@
+<a class="navbar-brand">{{ page_title }}</a>
+<div class="collapse navbar-collapse" id="navbarSupportedContent">
+  <div class="navbar-nav ms-3 me-auto">
+    {% if navs %} {% include get_template(navs) %} {% endif %}
+  </div>
+  <div class="navbar-nav">
+    {% if notification %}
+    <i
+      class="bi bi-bell nav-link"
+      role="button"
+      hx-get="{{ url_for('index') }}"
+      hx-target="#root"
+      hx-push-url="true"
+    ></i>
+    {% endif %}
+    <span class="nav-link disabled text-secondary">{{ user }}</span>
+    {% if nav_links %} {% include get_template(nav_links) %} {% endif %} {% if
+    enable_home %}
+    <i
+      class="bi bi-house-door-fill nav-link"
+      role="button"
+      hx-get="{{ url_for('index') }}"
+      hx-target="#root"
+      hx-push-url="true"
+    ></i>
+    {% endif %}
+  </div>
+</div>
